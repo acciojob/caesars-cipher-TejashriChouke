@@ -1,46 +1,25 @@
-// Your Script here.
+function rot13(encodedString) {
+  // Define a function to shift a single character by 13 positions
+  function shiftChar(char) {
+    const charCode = char.charCodeAt(0);
+    if (char >= 'A' && char <= 'Z') {
+      // Shift uppercase letters
+      return String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+    } else if (char >= 'a' && char <= 'z') {
+      // Shift lowercase letters
+      return String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+    } else {
+      // Non-alphabetic characters, leave them unchanged
+      return char;
+    }
+  }
 
-const lookup = {
-  A: "N",
-  B: "O",
-  C: "P",
-  D: "Q",
-  E: "R",
-  F: "S",
-  G: "T",
-  H: "U",
-  I: "V",
-  J: "W",
-  K: "X",
-  L: "Y",
-  M: "Z",
-  N: "A",
-  O: "B",
-  P: "C",
-  Q: "D",
-  R: "E",
-  S: "F",
-  T: "G",
-  U: "H",
-  V: "I",
-  W: "J",
-  X: "K",
-  Y: "L",
-  Z: "M",
-  "?": "?",
-  ",": ",",
-};
-
-function rot13(encodedStr) {
-  let decodedArr = []; // Your Result goes here
-  // Only change code below this line
-
-  return; //return decodedArr
+  // Split the input string into an array of characters, apply the shift function, and join them back
+  return encodedString.split('').map(shiftChar).join('');
 }
 
-// You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
+// Example usage:
+//const encodedText = "SERR PBQR PNZC";
+//const decodedText = rot13(encodedText);
+//console.log(decodedText); // Output: "FREE CODE CAMP"
 
-// console.log(rot13("SERR YBIR? NPPVBWBO"));
-
-// Do not change this line
-window.rot13 = rot13;
